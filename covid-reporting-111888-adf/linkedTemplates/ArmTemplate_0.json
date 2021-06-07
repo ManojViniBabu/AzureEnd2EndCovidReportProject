@@ -340,6 +340,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "country_lookup.csv",
+						"folderPath": "lookup_country_code",
 						"fileSystem": "lookup"
 					},
 					"columnDelimiter": ",",
@@ -389,6 +390,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "dim_date.csv",
+						"folderPath": "lookup_week",
 						"fileSystem": "lookup"
 					},
 					"columnDelimiter": ",",
