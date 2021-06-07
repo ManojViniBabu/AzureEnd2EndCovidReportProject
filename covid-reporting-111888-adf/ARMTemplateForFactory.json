@@ -167,6 +167,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Ingest"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-06-01T13:12:01Z"
 			},
@@ -379,6 +382,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Ingest"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-06-01T07:18:04Z"
 			},
@@ -398,7 +404,7 @@
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
-							"timeout": "0.00:07:00",
+							"timeout": "1.00:0:00",
 							"retry": 0,
 							"retryIntervalInSeconds": 30,
 							"secureOutput": false,
@@ -425,6 +431,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Process"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-06-07T08:07:48Z"
 			},
@@ -1254,6 +1263,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Process"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
