@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "covid-reporting-111888-adf"
+		},
+		"ls_ablob_covidreportingsa_connectionString": {
+			"value": ""
+		},
+		"ls_adl_covidreportingdlsa_accountKey": {
+			"value": ""
+		},
+		"ls_adl_covidreportingdlsa_properties_typeProperties_url": {
+			"value": "https://covidreporting111888dlsa.dfs.core.windows.net"
+		},
+		"ls_http_ecdc_data_properties_typeProperties_url": {
+			"value": "@{linkedService().sourceBaseUrl}"
+		},
+		"tr_ingest_population_data_properties_typeProperties_scope": {
+			"value": "/subscriptions/0e92dd4e-4f15-421f-abe7-0601cf29706c/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreporting111888sa"
+		}
+	}
+}
