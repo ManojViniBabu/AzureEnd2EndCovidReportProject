@@ -1,0 +1,6 @@
+1)Ingest data from sources such as HTTP and Azure Blob Storage into Azure Data Lake Gen2 using Azure Data Factory (ADF)
+2)Transform data using Databricks Notebook Activity in Azure Data Factory (ADF) and load into Azure Data Lake Storage Gen2
+3) Load transformed data from Azure Data Lake Storage Gen2 to Azure SQL Database using Azure Data Factory (ADF)
+4) Transform data using Data Flows in Azure Data Factory (ADF) and load into Azure Data Lake Storage Gen2
+5) Monitor pipelines using Azure Data Factory (ADF), Azure Monitor and Log Analytics
+6) Triggers to schedule the data pipelines.
