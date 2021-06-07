@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_cases",
+						"referenceName": "df_transform_cases_data",
 						"type": "DataFlowReference"
 					},
 					"compute": {

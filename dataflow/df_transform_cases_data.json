@@ -1,6 +1,7 @@
 {
-	"name": "df_cases",
+	"name": "df_transform_cases_data",
 	"properties": {
+		"description": "This dataflow  transforms  the raw cases data . ",
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
