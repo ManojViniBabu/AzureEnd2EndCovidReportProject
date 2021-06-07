@@ -1,0 +1,25 @@
+{
+	"name": "tr_ingest_ecdx_data",
+	"properties": {
+		"description": "Trigger  to initiate  ecdc  data copy pipeline",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_ingest_ecdc_data",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-06-01T18:50:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
