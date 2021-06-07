@@ -6,12 +6,20 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "ds_hospital_admissions",
+						"type": "DatasetReference"
+					},
+					"name": "SrcHospitalAdmissions"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1"
+			"transformations": [
+				{
+					"name": "SelectRequired"
+				}
+			],
+			"script": "source(output(\n\t\tcountry as string,\n\t\tindicator as string,\n\t\tdate as date,\n\t\tyear_week as string,\n\t\tvalue as double,\n\t\tsource as string,\n\t\turl as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> SrcHospitalAdmissions\nSrcHospitalAdmissions select(mapColumn(\n\t\tcountry,\n\t\tindicator,\n\t\tvalue,\n\t\tsource,\n\t\teach(match(name=='date'),\n\t\t\t'reported_date' = $$),\n\t\teach(match(name=='year_week'),\n\t\t\t'reported_year_week' = $$)\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectRequired"
 		}
 	}
 }
