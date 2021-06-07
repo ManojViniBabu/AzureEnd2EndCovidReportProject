@@ -5,6 +5,9 @@
 			"referenceName": "ls_adl_covidreportingdlsa",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Lookup"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
