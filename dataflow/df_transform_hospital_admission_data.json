@@ -29,9 +29,17 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "ds_processed_weekly_hospital_admissions",
+						"type": "DatasetReference"
+					},
 					"name": "SinkWeekly"
 				},
 				{
+					"dataset": {
+						"referenceName": "ds_processed_daily_hospital_admissions",
+						"type": "DatasetReference"
+					},
 					"name": "SinkDaily"
 				}
 			],
