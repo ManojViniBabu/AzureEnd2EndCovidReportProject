@@ -3,10 +3,39 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
-			"sinks": [],
-			"transformations": [],
-			"script": ""
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_population_extracted",
+						"type": "DatasetReference"
+					},
+					"name": "SourcePopulation"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_processed_population",
+						"type": "DatasetReference"
+					},
+					"name": "SinkPopulation"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SelectRequired"
+				},
+				{
+					"name": "PivotRequired"
+				},
+				{
+					"name": "DerivedColumn"
+				},
+				{
+					"name": "SelectRequired2"
+				}
+			],
+			"script": "source(output(\n\t\t{indic_de,geo\\time} as string,\n\t\t{2008 } as string,\n\t\t{2009 } as string,\n\t\t{2010 } as string,\n\t\t{2011 } as string,\n\t\t{2012 } as string,\n\t\t{2013 } as string,\n\t\t{2014 } as string,\n\t\t{2015 } as string,\n\t\t{2016 } as string,\n\t\t{2017 } as string,\n\t\t{2018 } as string,\n\t\t{2019 } as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> SourcePopulation\nSourcePopulation select(mapColumn(\n\t\t{indic_de,geo\\time},\n\t\t{2019 }\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectRequired\nSelectRequired2 pivot(groupBy(country_code),\n\tpivotBy(age_group),\n\tpercentge = sum(year_percentage),\n\tcolumnNaming: '$V_$N',\n\tlateral: true) ~> PivotRequired\nSelectRequired derive(age_group = regexSplit({indic_de,geo\\time}, ',')[1],\n\t\tcountry_code = regexSplit({indic_de,geo\\time}, ',')[2]) ~> DerivedColumn\nDerivedColumn select(mapColumn(\n\t\tage_group,\n\t\tcountry_code,\n\t\tyear_percentage = {2019 }\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectRequired2\nPivotRequired sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tumask: 0022,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkPopulation"
 		}
 	}
 }
